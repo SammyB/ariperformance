@@ -1,5 +1,5 @@
 <div class="filter-dropdown__wrapper text-center collection-filters">
-  <div class="filter-dropdown">
+  <div class="grid__item grid-product medium--one-half large--one-half filter-dropdown">
     <label class="filter-dropdown__label" for="sortBy">
       <span class="filter-dropdown__label--title">{{ 'collections.sorting.title' | t }}</span>
       <span class="filter-dropdown__label--active"></span>
@@ -16,4 +16,21 @@
       <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
     </select>
   </div>
+
+  <div class="grid__item grid-product medium--one-half large--one-half  filter">
+      <label class="filter-dropdown__label" for="sortBy">
+        <span class="filter-dropdown__label--title">Browse by tag:</span>
+        <span class="filter-dropdown__label--active"></span>
+      </label>
+      <select class="coll-filter">
+        <option value="">All</option>
+        {% for tag in collection.all_tags %}
+        {% if current_tags contains tag %}
+        <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+        {% else %}
+        <option value="{{ tag | handle }}">{{ tag }}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+    </div>
 </div>
