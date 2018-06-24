@@ -82,6 +82,16 @@
   {% if section.settings.collection_tags_enable %}
     <hr class="hr--small hr--clear">
   {% endif %}
+
+  <select class="js-collection-filter" data-collection="{{collection.id}}">
+      <option disabled="" selected="" value="">select a tag</option>
+  {% for tag in collection.all_tags %}
+  {% if tag != ''%}
+  <option value="{{ tag | url_encode }}">{{ tag }}</option>
+  {% endif %}
+  {% endfor %}
+  </select>
+
 </header>
 
 {% if section.settings.collection_products_grid == 'collage' %}
