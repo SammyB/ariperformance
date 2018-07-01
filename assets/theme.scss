@@ -2777,7 +2777,8 @@ $slick-opacity-not-active: 0.25;
   margin-left: -9px;
   position: absolute;
   transition: all 0.25s ease-out;
-  background: $colorNavText;
+  // background: $colorNavText;
+  background: #fff;
 
   .js-drawer-open-left & {
     width: 24px;
@@ -2853,6 +2854,7 @@ $slick-opacity-not-active: 0.25;
 .site-nav__link {
   @include accentFontStack;
   @include transition(color 0.2s);
+  color: #fff;
   font-size: em(14px);
 }
 
@@ -3307,7 +3309,8 @@ button.mfp-arrow {
   position: relative;
   display: block;
   width: 100%;
-  background-color: $colorProductBackground;
+  // background-color: $colorProductBackground;
+  background-color: #f2f2f2;
   @include transition(opacity 0.4s ease-out);
 
   .grid-collage & {
@@ -4262,4 +4265,10 @@ button.mfp-arrow {
   .filter {
     padding-top: 10px;
   }
+}
+
+/*================ Module | Theme Header and Navigation Overrides ================*/
+.site-header {
+  background: rgba(51,51,51,0.7);
+  padding: 0;
 }

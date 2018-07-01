@@ -1,23 +1,40 @@
-<div class="grid">
-    {% for block in section.blocks %}
-    <div class="grid-item">
-        {% case block.type %}
+<div class="catelog__custom">
+    <div class="grid__item">
+        <div class="grid">
+            {% for block in section.blocks %}
+            <div class="grid__item large--one-third medium--one-third">
+                {% case block.type %}
+                    {% when 'first-section' %}
+                    {% include 'snippet_first-section' %}
 
-            {% when 'first-section' %}
-            {% include 'snippet_first-section' %}
+                    {% when 'second-section' %}
+                    {% include 'snippet_second-section' %}
 
-            {% when 'second-section' %}
-            {% include 'snippet_second-section' %}
+                    {% when 'third-section' %}
+                    {% include 'snippet_third-section' %}
 
-            {% when 'third-section' %}
-            {% include 'snippet_third-section' %}
+                    {% when 'fourth-section' %}
+                    {% include 'snippet_fourth-section' %}
 
-            {% when 'fourth-section' %}
-            {% include 'snippet_fourth-section' %}
+                    {% when 'fifth-section' %}
+                    {% include 'snippet_fifth-section' %}
 
-        {% endcase %}
+                    {% when 'sixth-section' %}
+                    {% include 'snippet_sixth-section' %}
+
+                    {% when 'seventh-section' %}
+                    {% include 'snippet_seventh-section' %}
+
+                    {% when 'eighth-section' %}
+                    {% include 'snippet_eighth-section' %}
+
+                    {% when 'ninth-section' %}
+                    {% include 'snippet_ninth-section' %}
+                {% endcase %}
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    {% endfor %}
 </div>
 
 {% schema %}
@@ -66,20 +83,70 @@
                 "label": "Image"
             }
         ]
+    },
+    {
+        "type": "fifth-section",
+        "name": "Fiat 500",
+        "settings": [
+            {
+                "id": "imageOne",
+                "type": "image_picker",
+                "label": "Image"
+            }
+        ]
+    },
+    {
+        "type": "sixth-section",
+        "name": "Alfa Romeo 4C",
+        "settings": [
+            {
+                "id": "imageOne",
+                "type": "image_picker",
+                "label": "Image"
+            }
+        ]
+    },
+    {
+        "type": "seventh-section",
+        "name": "Alfa Romeo Giulia",
+        "settings": [
+            {
+                "id": "imageOne",
+                "type": "image_picker",
+                "label": "Image"
+            }
+        ]
+    },
+    {
+        "type": "eighth-section",
+        "name": "Alfa Romeo Giulietta",
+        "settings": [
+            {
+                "id": "imageOne",
+                "type": "image_picker",
+                "label": "Image"
+            }
+        ]
+    },
+    {
+        "type": "ninth-section",
+        "name": "Alfa Romeo Mito",
+        "settings": [
+            {
+                "id": "imageOne",
+                "type": "image_picker",
+                "label": "Image"
+            }
+        ]
     }
 ]
 }
 {% endschema %}
 {% stylesheet %}
-.grid {
-    display: flex;
-    max-width: 900px;
-    margin: 0 auto;
+.catelog__custom {
+    display: inline-block;
 }
-.grid-item {
-    margin-right: 24px;
-}
-.grid-item:last-of-type {
-    margin-right: 0px;
+.grid__item {
+    text-align: center;
 }
 {% endstylesheet %}

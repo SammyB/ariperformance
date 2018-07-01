@@ -154,18 +154,16 @@
   font-family: $accentFontStack;
   font-weight: $accentFontWeight;
   font-style: $accentFontStyle;
-  {% if settings.type_accent_spacing %}
+  
     letter-spacing: 0.1em;
-  {% endif %}
-  {% if settings.type_accent_transform %}
+  
+  
     text-transform: uppercase;
-  {% endif %}
+  
 }
 
 @mixin bodyFontItalic {
-  {% if settings.type_base_italize_titles %}
-    font-style: italic;
-  {% endif %}
+  
 }
 
 @mixin visuallyHidden {
@@ -308,19 +306,19 @@ $breakpoint-has-push:  ('medium', 'medium-down', 'large');
 $breakpoint-has-pull:  ('medium', 'medium-down', 'large');
 
 /*================ Color variables ================*/
-$colorPrimary: {{ settings.color_primary }};
-$colorSecondary: {{ settings.color_secondary }};
+$colorPrimary: #ed1e24;
+$colorSecondary: #ed1e24;
 
 // Button colors
 $colorBtnPrimary: $colorPrimary;
 $colorBtnPrimaryHover: lighten($colorBtnPrimary, 12%);
 $colorBtnPrimaryActive: adaptive-color($colorPrimary, 24%);
-$colorBtnPrimaryText: {{ settings.color_button_text }};
+$colorBtnPrimaryText: #ffffff;
 
 $colorBtnSecondary: $colorSecondary;
 $colorBtnSecondaryHover: lighten($colorBtnSecondary, 10%);
 $colorBtnSecondaryActive: adaptive-color($colorSecondary, 10%);
-$colorBtnSecondaryText: {{ settings.color_button_text }};
+$colorBtnSecondaryText: #ffffff;
 
 $colorBtnSecondaryAccent: $colorBtnPrimary;
 $colorBtnSecondaryAccentHover: lighten($colorBtnSecondaryAccent, 12%);
@@ -331,25 +329,25 @@ $colorLink: $colorSecondary;
 $colorLinkHover: $colorPrimary;
 
 // Text colors
-$colorTextBody: {{ settings.color_body_text }};
+$colorTextBody: #563b3b;
 
 // Heading colors
-$colorHeadings: {{ settings.color_headings }};
+$colorHeadings: #ed1e24;
 
 // Backgrounds
-$colorBody: {{ settings.color_body_bg }};
-$colorProductBackground: {{ settings.color_product_background }};
-$colorInputBg: {{ settings.color_input }};
-$colorNewsletter: {{ settings.color_newsletter }};
+$colorBody: #ffffff;
+$colorProductBackground: #ed1e24;
+$colorInputBg: #f6f6f6;
+$colorNewsletter: #e5e5e5;
 
 // Border colors
-$colorBorder: {{ settings.color_borders }};
+$colorBorder: #563b3b;
 
 // Border size
-$borderWidthHeader: {{ settings.type_header_border_thickness }};
+$borderWidthHeader: 1px;
 
 // Sale tag color
-$colorSaleTag: {{ settings.color_sale_tag }};
+$colorSaleTag: #ed1e24;
 
 // Nav and dropdown link background
 $colorNav: $colorBody;
@@ -369,11 +367,11 @@ $drawerCartWidth: 300px;
 $drawerCartWidthLarge: 400px; // small-up width
 $drawerHeaderHeight: 80px;
 $drawerCartFooterHeight: 130px; // default, overwritten by JS
-$colorDrawers: {{ settings.color_drawer_background }};
-$colorDrawerBorder: {{ settings.color_drawer_border }};
-$colorDrawerText: {{ settings.color_drawer_text }};
-$colorDrawerButton: {{ settings.color_drawer_button }};
-$colorDrawerButtonText: {{ settings.color_drawer_button_text }};
+$colorDrawers: #2d2c2c;
+$colorDrawerBorder: #ed1e24;
+$colorDrawerText: #ffffff;
+$colorDrawerButton: #ed1e24;
+$colorDrawerButtonText: #ffffff;
 $drawerTransition: 'all 0.35s cubic-bezier(0.46, 0.01 , 0.32, 1)';
 
 // Sizing variables
@@ -398,9 +396,7 @@ $collageImageLarge: 520px;
 $collageImageMedium: 310px;
 $collageImageSmall: 230px;
 
-{% if settings.product_vendor_enable %}
-  $collageImageLarge: 544px;
-{% endif %}
+
 
 // Collection Collage Grid
 // These heights are used to determine the row height for the
@@ -416,51 +412,89 @@ $passwordPageUseBgImage: true;
 $color-blankstate: rgba($colorTextBody, 0.35);
 $color-blankstate-background: rgba($colorTextBody, 0.10);
 
-/*================ Typography ================*/
-{%- assign accent_family = settings.type_accent_family -%}
-{%- assign base_family = settings.type_base_family -%}
-{%- assign header_family = settings.type_header_family -%}
+/*================ Typography ================*/@font-face {
+  font-family: Roboto;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/roboto/roboto_n7.51ede27d5b58491d9cf07ad184108da52fef80b4.woff2?&hmac=8bb259a3f49ea88d41c462dcb44f2cec856d8661f982e17fbec39180f6186d44") format("woff2"),
+       url("https://fonts.shopifycdn.com/roboto/roboto_n7.1babbb6a27f91b14216bafa40bf222e08f6999f4.woff?&hmac=2dc8169e45bac2afac11d0d3aaf8d06b4454742dfab2d1c2987406d80e19ec4f") format("woff");
+}
 
-{{ accent_family | font_face }}
-{{ base_family | font_face }}
-{{ header_family | font_face }}
+@font-face {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.fe093fe9ca22a15354813c912484945a36b79146.woff2?&hmac=64c57d7fee8da8223a0d4856285068c02c248ef210cae57dcd9c3e633375e8a4") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.8bddb85c18a0094c427a9bf65dee963ad88de4e8.woff?&hmac=f74109e3105603c8a8cfbd8dec4e8a7e53572346fb96aacec203fc3881ddabf1") format("woff");
+}
 
-{%- assign base_family_bold = base_family | font_modify: 'weight', 'bolder' -%}
-{%- assign base_family_italic = base_family | font_modify: 'style', 'italic' -%}
-{%- assign base_family_bold_italic = base_family_bold | font_modify: 'style', 'italic' -%}
-{%- assign accent_family_bold = accent_family | font_modify: 'weight', 'bolder' -%}
+@font-face {
+  font-family: Quicksand;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/quicksand/quicksand_n7.814ad74da12e242768feb9a53e013a1b4a46d7b3.woff2?&hmac=66eb6ac49e443f6c07b7d2c352514fc4df7432ca7de4bd6a2e3e7f35f2e60fda") format("woff2"),
+       url("https://fonts.shopifycdn.com/quicksand/quicksand_n7.fe8d36c3dbce1c07d8230831c08195630ffab04d.woff?&hmac=5f783454c7a4277ae7b6eb1f4096d7d68eabd43c808c208cd9a0c9b7ac032eb6") format("woff");
+}
 
-{{ base_family_bold | font_face }}
-{{ base_family_italic | font_face }}
-{{ base_family_bold_italic | font_face }}
-{{ accent_family_bold | font_face }}
+@font-face {
+  font-family: Helvetica;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_n7.39bee04bd277a9c4e94e2fd42d53f4e3c0afb8a5.woff2?&hmac=b99c35ba03edd5495ba7af87326d5fe8af5b2363f485475338ae16401b9af50d") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_n7.b95359461a6788d5549e702cb2123bc40c227e49.woff?&hmac=684bc7a600f408db705c8f9b90d3d964d22c13a8ce7492386d351a852f30309b") format("woff");
+}
+
+@font-face {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: oblique;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_o4.f9832a0fc1ee8fc5a359636e410d6941e1e4ca03.woff2?&hmac=775a8a34e13ea386c331d51fd5f061993cd3135ce54cc4ed2b9254f3a3be05df") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_o4.0063286aec443697ebae04eeb9c78b820f9f7805.woff?&hmac=32c2cf4f29cdfb274d76aeb45a9a8b5c97eb6a9255cc2073ee5c1a85140ad7fe") format("woff");
+}
+
+@font-face {
+  font-family: Helvetica;
+  font-weight: 700;
+  font-style: oblique;
+  src: url("https://fonts.shopifycdn.com/helvetica/helvetica_o7.215fd4ca1a06214fa01e44328a1992c977700ea2.woff2?&hmac=b7d9523eaf6b1e57f158595303d5e41e66c07d43212d2fbfe8df1f4b7d6c1f79") format("woff2"),
+       url("https://fonts.shopifycdn.com/helvetica/helvetica_o7.b0a2026ae2aa64d060f9ce0ee1b3c3c1aa21bf88.woff?&hmac=97dc9f03549c58cc74feee46ffde68daa822080823ae1159e9cd489daf68bcb9") format("woff");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 900;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/roboto/roboto_n9.53d38598fbfdff3d54f7424818da582af4f7d230.woff2?&hmac=582c39f78ca841dacc5591aa0f0546f8cf264ba6db9510bd35029288e7118278") format("woff2"),
+       url("https://fonts.shopifycdn.com/roboto/roboto_n9.f3669795f8a2d1263fcc5f16bb1988525e54c56f.woff?&hmac=885dc151bcf06406fc11e4239b31eaf41e3a5ddd0ab297ea439483e776e3adea") format("woff");
+}
+
 
 // Header Font
-$headerFontStack: {{ header_family.family }}, {{ header_family.fallback_families }};
-$headerFontWeight: {{ header_family.weight }};
-$headerFontStyle: {{ header_family.style }};
-$headerBaseFontSize: {{ settings.type_header_base_size }};
+$headerFontStack: Quicksand, sans-serif;
+$headerFontWeight: 700;
+$headerFontStyle: normal;
+$headerBaseFontSize: 38px;
 
 // Body Font
-$bodyFontStack: {{ base_family.family }}, {{ base_family.fallback_families }};
-$bodyFontWeight: {{ base_family.weight }};
-$bodyFontWeightBold: {{ base_family_bold.weight | default: 700 }};
-$bodyFontStyle: {{ base_family.style }};
-$baseFontSize: {{ settings.type_base_size }}; // Henceforth known as 1em
+$bodyFontStack: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+$bodyFontWeight: 400;
+$bodyFontWeightBold: 700;
+$bodyFontStyle: normal;
+$baseFontSize: 17px; // Henceforth known as 1em
 
 // Accent Font
-$accentFontStack: {{ accent_family.family }}, {{ accent_family.fallback_families }};
-$accentFontWeight: {{ accent_family.weight }};
-$accentFontWeightBold: {{ accent_family_bold.weight | default: 700 }};
-$accentFontStyle: {{ accent_family.style }};
+$accentFontStack: Roboto, sans-serif;
+$accentFontWeight: 700;
+$accentFontWeightBold: 900;
+$accentFontStyle: normal;
 
 @font-face {
   font-family: 'icons';
-  src: url('{{ "icons.eot" | asset_url }}');
-  src: url('{{ "icons.eot" | asset_url }}#iefix') format("embedded-opentype"),
-       url('{{ "icons.woff" | asset_url }}') format("woff"),
-       url('{{ "icons.ttf" | asset_url }}') format("truetype"),
-       url('{{ "icons.svg" | asset_url }}#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/2951/3154/t/3/assets/icons.eot?3230974949674378442');
+  src: url('//cdn.shopify.com/s/files/1/2951/3154/t/3/assets/icons.eot?3230974949674378442#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/2951/3154/t/3/assets/icons.woff?3230974949674378442') format("woff"),
+       url('//cdn.shopify.com/s/files/1/2951/3154/t/3/assets/icons.ttf?3230974949674378442') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/2951/3154/t/3/assets/icons.svg?3230974949674378442#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 };
@@ -1008,11 +1042,7 @@ h6 {
   font-size: em(floor($headerBaseFontSize * 0.51));
 }
 
-{% if settings.type_accent_subheadings %}
-  h3, h4, h5, h6 {
-    @include accentFontStack;
-  }
-{% endif %}
+
 
 .h1 { @extend h1; }
 .h2 { @extend h2; }
@@ -1044,21 +1074,17 @@ th,
     content: '';
     display: block;
     margin: 20px auto;
-    border-bottom: 1px {{ settings.color_borders }} solid;
+    border-bottom: 1px #563b3b solid;
     max-width: 50px;
   }
 
   h3 {
-    {% if settings.type_accent_subheadings %}
-      @include accentFontStack;
-    {% endif %}
+    
     text-align: center;
   }
 
   h4, h5, h6 {
-    {% if settings.type_accent_subheadings %}
-      @include accentFontStack;
-    {% endif %}
+    
   }
 }
 
@@ -2271,11 +2297,9 @@ $shareCountBg: $colorBody;
   }
 
   .hero__subtitle {
-    {% if settings.type_accent_subheadings %}
-      @include accentFontStack;
-    {% else %}
+    
       @include headerFontStack;
-    {% endif %}
+    
     margin-bottom: 15px;
   }
 
@@ -2361,7 +2385,7 @@ $slick-opacity-not-active: 0.25;
 
 // Only called once so make sure proper file is grabbed
 @function slick-image-url($url) {
-  @return url({{ "ajax-loader.gif" | asset_url }});
+  @return url(//cdn.shopify.com/s/files/1/2951/3154/t/3/assets/ajax-loader.gif?3230974949674378442);
 }
 
 // Unused intentionally
@@ -2753,7 +2777,8 @@ $slick-opacity-not-active: 0.25;
   margin-left: -9px;
   position: absolute;
   transition: all 0.25s ease-out;
-  background: $colorNavText;
+  // background: $colorNavText;
+  background: #fff;
 
   .js-drawer-open-left & {
     width: 24px;
@@ -2829,6 +2854,7 @@ $slick-opacity-not-active: 0.25;
 .site-nav__link {
   @include accentFontStack;
   @include transition(color 0.2s);
+  color: #fff;
   font-size: em(14px);
 }
 
@@ -3283,7 +3309,8 @@ button.mfp-arrow {
   position: relative;
   display: block;
   width: 100%;
-  background-color: $colorProductBackground;
+  // background-color: $colorProductBackground;
+  background-color: #f2f2f2;
   @include transition(opacity 0.4s ease-out);
 
   .grid-collage & {
@@ -3991,7 +4018,7 @@ button.mfp-arrow {
   width: 100%;
 
   @if $passwordPageUseBgImage {
-    background-image: url({{ "password-page-background.jpg" | asset_url }});
+    background-image: url(//cdn.shopify.com/s/files/1/2951/3154/t/3/assets/password-page-background.jpg?3230974949674378442);
     background-size: cover;
     background-repeat: no-repeat;
     color: #ffffff;
@@ -4233,3 +4260,22 @@ button.mfp-arrow {
   }
 }
 
+/*================ CUSTOM | ARI PERFORMANCE ================*/
+@media screen and (max-width: 580px) {
+  .filter {
+    padding-top: 10px;
+  }
+}
+
+/*================ Module | Theme Header and Navigation Overrides ================*/
+.site-header {
+  background: rgba(51,51,51,0.7);
+  padding: 0;
+}
+
+.catelog__custom {
+  h2 {
+    font-size: 22px;
+    padding-top: 20px;
+  }
+}

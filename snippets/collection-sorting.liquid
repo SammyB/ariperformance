@@ -22,6 +22,54 @@
         <span class="filter-dropdown__label--title">Browse by tag:</span>
         <span class="filter-dropdown__label--active"></span>
       </label>
+      {% comment %} Custom for ARIPerformance, can extend as we need {% endcomment %}
+      <select class="coll-filter">
+        <option value="">All</option>
+          {% if current_tags contains "brake-pads" %}
+            <option value="brakes-pads" selected>brakes &amp; pads</option>
+          {% else %}
+            <option value="brakes-pads">brakes &amp; pads</option>
+          {% endif %}
+
+          {% if current_tags contains "engine"  %}
+            <option value="engine" selected>brakes &amp; pads</option>
+          {% else %}
+            <option value="engine">engine</option>
+          {% endif %}
+
+          {% if current_tags contains "exhausts" %}
+            <option value="exhausts" selected>exhausts</option>
+          {% else %}
+            <option value="exhausts">exhausts</option>
+          {% endif %}
+
+          {% if current_tags contains "exterior"  %}
+            <option value="exterior" selected>exterior</option>
+          {% else %}
+            <option value="exterior">exterior</option>
+          {% endif %}
+
+          {% if current_tags contains "interior" %}
+            <option value="interior" selected>interior</option>
+          {% else %}
+            <option value="interior">interior</option>
+          {% endif %}
+
+          {% if current_tags contains "suspension" %}
+            <option value="suspension" selected>suspension</option>
+          {% else %}
+            <option value="suspension">suspension</option>
+          {% endif %}
+
+          {% if current_tags contains "wheels" %}
+            <option value="wheels" selected>wheels</option>
+          {% else %}
+            <option value="wheels">wheels</option>
+          {% endif %}
+        
+      </select>
+
+      {% comment: this is the original filter which shows absolutely everything, which i think is too much %}
       <select class="coll-filter">
         <option value="">All</option>
         {% for tag in collection.all_tags %}
@@ -32,5 +80,6 @@
         {% endif %}
         {% endfor %}
       </select>
+      {% endcomment %}
     </div>
 </div>
